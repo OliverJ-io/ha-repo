@@ -1,0 +1,11 @@
+name: "Hello World Loader"
+description: "Loads the Hello World Integration"
+version: "1.0.0"
+slug: "hello_world_loader"
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
