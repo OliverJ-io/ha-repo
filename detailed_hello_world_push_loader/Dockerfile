@@ -1,9 +1,9 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-COPY run.sh /
-RUN chmod a+x /run.sh
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-COPY detailed_hello_world_push /
+COPY rootfs /
+RUN apk add --no-cache git
 
-CMD [ "/run.sh" ]
+CMD [ "/etc/addon/run" ]

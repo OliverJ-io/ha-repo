@@ -1,0 +1,4 @@
+configurations:
+  channel:
+    name: Channel
+    description: What channel should be used to install the loader

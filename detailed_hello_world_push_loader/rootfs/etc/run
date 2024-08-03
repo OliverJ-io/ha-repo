@@ -1,0 +1,22 @@
+#!usr/bin/with-contenv bashio
+# shellcheck shell=bash
+
+CHANNEL=$(bashio::config 'channel' 'current')
+
+if ! bashio::fs.directory_exists "/homeassistant/custom_components"; then
+    mkdir "/homeassistant/custom_components"
+fi
+
+if bashio::var.equals "${CHANNEL}" "current"; then
+    if bashio::fs.directory_exists "/tmp/oliverj_store"; then
+        rm -rf /tmp/oliverj_store
+    fi
+
+    git clone --depth 1 --branch main https://github.com/OliverJ-io/dhwp.git /tmp/oliverj_store
+
+    cd /
+
+    rm -rf /homeassistant/custom_components/detailed_hello_world_push
+    mv /tmp/oliverj_store /homeassistant/custom_components/detailed_hello_world_push
+    rm -rf /tmp/oliverj_store
+fi
